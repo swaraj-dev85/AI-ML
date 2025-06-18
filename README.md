@@ -34,17 +34,9 @@ I make AI models and frontend apps—because one can't survive on just one crisi
 
 ---
 
-### 🧠 MiniProject
 
-**MiniProject Title**: *Image Classifier (CNN)*  
-- Built a working ML model using the concepts learned  
-- Preprocessed and cleaned raw data  
-- Trained and evaluated model using real-world datasets  
-- Deployed the final model using `Streamlit`/`Flask`
 
----
-
-### 📚 What I Learned (AI/ML Internship Recap)
+### 📚 What I Learned (AI/ML Recap)
 
 - **Foundations of AI/ML**: Types of ML, applications, tools  
 - **Python for ML**: NumPy, Pandas, data visualization  
