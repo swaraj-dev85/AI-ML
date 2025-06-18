@@ -1,0 +1,42 @@
+# Step 1: Import necessary libraries
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+# Step 2: Sample text data
+# This is a small sample dataset with two categories: tech and sports
+data = {
+    'text': [
+        "Apple releases new iPhone",
+        "India wins the cricket match",
+        "Google unveils AI breakthrough",
+        "Virat Kohli scores a century",
+        "Microsoft launches new Surface laptop",
+        "Messi leads team to victory"
+    ],
+    'label': ["tech", "sports", "tech", "sports", "tech", "sports"]
+}
+
+# Create a pandas DataFrame
+df = pd.DataFrame(data)
+
+# Step 3: Convert labels to numeric values
+df['label'] = df['label'].map({'tech': 0, 'sports': 1})
+
+# Step 4: Text preprocessing and TF-IDF vectorization
+# Convert text to lowercase and remove punctuation is done internally by TfidfVectorizer if needed
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(df['text'])
+
+# Step 5: Split data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, df['label'], test_size=0.3, random_state=42)
+
+# Step 6: Train a logistic regression classifier
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Step 7: Predict and evaluate the model
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))
