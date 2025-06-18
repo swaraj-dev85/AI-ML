@@ -1,0 +1,49 @@
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_diabetes
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import Binarizer, StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Step 1: Load the diabetes dataset
+# Note: This dataset in sklearn is for regression by default (target is continuous), so we'll convert it to binary
+diabetes = load_diabetes()
+X = diabetes.data
+y = diabetes.target
+
+# Step 2: Convert the target into binary (classification problem)
+# We'll use a threshold to convert continuous values into 0 and 1
+# Let's classify as "1" if target > 140 (diabetic), else "0" (non-diabetic)
+y_binary = Binarizer(threshold=140).fit_transform(y.reshape(-1, 1)).ravel()
+
+# Step 3: Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y_binary, test_size=0.2, random_state=42)
+
+# Step 4: Feature scaling - Logistic Regression benefits from standardized data
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Step 5: Train the Logistic Regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Step 6: Make predictions
+y_pred = model.predict(X_test)
+
+# Step 7: Evaluate the model
+print(" Accuracy Score:", accuracy_score(y_test, y_pred))
+print("\n Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\n Classification Report:\n", classification_report(y_test, y_pred))
+
+# Step 8: Optional - Visualizing predicted vs actual (basic scatter plot)
+plt.scatter(range(len(y_test)), y_test, color='blue', label='Actual')
+plt.scatter(range(len(y_pred)), y_pred, color='red', label='Predicted', alpha=0.6)
+plt.title("Actual vs Predicted - Logistic Regression")
+plt.xlabel("Sample index")
+plt.ylabel("Class (0: No Diabetes, 1: Diabetes)")
+plt.legend()
+plt.show()
