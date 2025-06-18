@@ -30,3 +30,15 @@ Welcome to my GitHub! I’m an aspiring Manufacturing Automation Engineer with a
 - Deployed the final model using `Streamlit`/`Flask`
 
 ---
+
+## 📫 Let's Connect
+
+- 📧 Email: [swaraj.irranki@gmail.com]  
+- 💼 LinkedIn: [https://www.linkedin.com/in/irranki-swaraj/)  
+- 🌐 Portfolio: [https://swarajirranki.me)
+
+---
+
+⭐ **Thanks for visiting! Feel free to explore my repositories and projects.**
+
+___
