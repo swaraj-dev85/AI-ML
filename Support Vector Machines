@@ -1,0 +1,45 @@
+# Import required libraries
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
+
+# Step 1: Load the digits dataset
+digits = datasets.load_digits()
+
+# Step 2: Get features and labels
+X = digits.data  # Flattened 8x8 pixel images
+y = digits.target  # Digit labels (0–9)
+
+# Step 3: Split the data (80% training, 20% testing)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 4: Scale the features for better SVM performance
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Step 5: Train an SVM model with RBF kernel (default)
+svm_model = SVC(kernel='rbf', C=10, gamma=0.001)
+svm_model.fit(X_train, y_train)
+
+# Step 6: Predict on test data
+y_pred = svm_model.predict(X_test)
+
+# Step 7: Evaluate the model
+print(" Accuracy Score:", accuracy_score(y_test, y_pred))
+print("\n Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\n Classification Report:\n", classification_report(y_test, y_pred))
+
+# Step 8: Optional - Display some digits with predictions
+plt.figure(figsize=(8, 4))
+for i in range(6):
+    plt.subplot(2, 3, i + 1)
+    plt.imshow(digits.images[i], cmap='gray')
+    plt.title(f"Label: {digits.target[i]}")
+    plt.axis('off')
+plt.suptitle("Sample Digits from Dataset")
+plt.tight_layout()
+plt.show()
