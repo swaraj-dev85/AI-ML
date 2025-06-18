@@ -1,0 +1,51 @@
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# Step 1: Load Titanic dataset from seaborn or external URL
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+df = pd.read_csv(url)
+
+# Step 2: Display first few rows
+print("First 5 rows of the dataset:")
+print(df.head())
+
+# Step 3: Select features and target
+# We'll use a few basic features for simplicity
+features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']
+X = df[features]
+y = df['Survived']
+
+# Step 4: Handle missing values
+# Fill missing ages with the median
+X['Age'].fillna(X['Age'].median(), inplace=True)
+
+# Step 5: Convert categorical data ('Sex') to numeric
+label_encoder = LabelEncoder()
+X['Sex'] = label_encoder.fit_transform(X['Sex'])  # male=1, female=0
+
+# Step 6: Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 7: Train a Decision Tree Classifier
+dt_model = DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train, y_train)
+dt_preds = dt_model.predict(X_test)
+
+# Step 8: Train a Random Forest Classifier
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+rf_preds = rf_model.predict(X_test)
+
+# Step 9: Evaluate both models
+print("\n--- Decision Tree ---")
+print("Accuracy:", accuracy_score(y_test, dt_preds))
+print("Confusion Matrix:\n", confusion_matrix(y_test, dt_preds))
+print("Classification Report:\n", classification_report(y_test, dt_preds))
+
+print("\n--- Random Forest ---")
+print("Accuracy:", accuracy_score(y_tes
