@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Swaraj Irranki</h1>
-<h3 align="center">A multi-disciplinary engineer exploring AI/ML, Digital Twins & Data Science from India</h3>
+<h3 align="center">A multi-disciplinary engineer exploring AI/ML,& Data Science from India</h3>
 
 ---
 
