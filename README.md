@@ -1,6 +1,8 @@
+![logo](https://github.com/swaraj-dev85/Swaraj/blob/main/GitHub%20Banner.jpg)
+
 <h1 align="center">Hi 👋, I'm Swaraj Irranki</h1>
 <h3 align="center">A multi-disciplinary engineer exploring AI/ML,& Data Science from India</h3>
-
+<img align="right"alt="coding"width="400"src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3NjYTdkNjN1MDZzbnNpM250Mjc3N3VhbnYwYjZ3b2NodGtlMWp0ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif">
 ---
 
 🌱 **I’m currently learning**
@@ -87,4 +89,3 @@ I make AI models and frontend apps—because one can't survive on just one crisi
 ---
 
 ⭐ **Thanks for visiting! Feel free to explore my repositories and projects.**
-
